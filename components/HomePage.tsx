@@ -51,7 +51,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPromptSelect }) => {
   const stats = useMemo(() => {
     const totalPrompts = prompts.length;
 
-    // FIX: Explicitly specify the generic type for `reduce`'s accumulator.
+    // Fix: Explicitly specify the generic type for the `reduce` accumulator.
     // This ensures TypeScript correctly infers `modelCounts` as `Record<string, number>`,
     // resolving the arithmetic operation error on the subsequent `sort` call.
     const modelCounts = prompts.reduce<Record<string, number>>((acc, p) => {
@@ -60,7 +60,7 @@ const HomePage: React.FC<HomePageProps> = ({ onPromptSelect }) => {
     }, {});
     const topModels = Object.entries(modelCounts).sort((a, b) => b[1] - a[1]).slice(0, 2).map(m => m[0]);
 
-    // FIX: Explicitly specify the generic type for `reduce`'s accumulator.
+    // Fix: Explicitly specify the generic type for the `reduce` accumulator.
     // This ensures TypeScript correctly infers `tagCounts` as `Record<string, number>`,
     // resolving the arithmetic operation error on the subsequent `sort` call.
     const tagCounts = prompts.flatMap(p => p.tags).reduce<Record<string, number>>((acc, t) => {
