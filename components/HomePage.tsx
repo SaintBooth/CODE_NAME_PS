@@ -51,17 +51,23 @@ const HomePage: React.FC<HomePageProps> = ({ onPromptSelect }) => {
   const stats = useMemo(() => {
     const totalPrompts = prompts.length;
 
-    const modelCounts = prompts.reduce((acc, p) => {
+    // FIX: Explicitly specify the generic type for `reduce` to ensure TypeScript
+    // correctly infers the type of `modelCounts` as `Record<string, number>`. This
+    // resolves the arithmetic operation error in the following `sort` method.
+    const modelCounts = prompts.reduce<Record<string, number>>((acc, p) => {
       acc[p.model] = (acc[p.model] || 0) + 1;
       return acc;
-    }, {} as Record<string, number>);
+    }, {});
     const topModels = Object.entries(modelCounts).sort((a, b) => b[1] - a[1]).slice(0, 2).map(m => m[0]);
 
-    const tagCounts = prompts.flatMap(p => p.tags).reduce((acc, t) => {
+    // FIX: Explicitly specify the generic type for `reduce` to ensure TypeScript
+    // correctly infers the type of `tagCounts` as `Record<string, number>`. This
+    // resolves the arithmetic operation error in the following `sort` method.
+    const tagCounts = prompts.flatMap(p => p.tags).reduce<Record<string, number>>((acc, t) => {
         const tag = t.charAt(0).toUpperCase() + t.slice(1);
         acc[tag] = (acc[tag] || 0) + 1;
         return acc;
-    }, {} as Record<string, number>);
+    }, {});
     const trendingTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 5).map(t => t[0]);
 
     return { totalPrompts, topModels, trendingTags };
