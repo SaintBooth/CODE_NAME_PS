@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
   
+  <!-- Add Babel Standalone for in-browser JSX/TSX transpilation -->
+  <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+  
   <script type="importmap">
   {
     "imports": {
@@ -109,6 +112,6 @@
 </head>
 <body class="min-h-screen text-slate-800 dark:text-slate-200 marketplace-body">
   <div id="root"></div>
-  <script type="module" src="./index.tsx"></script>
+  <script type="text/babel" data-type="module" src="./index.tsx"></script>
 </body>
 </html>
