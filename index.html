@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptSpace Marketplace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+  
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://aistudiocdn.com/react@^19.2.0",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+      "react/": "https://aistudiocdn.com/react@^19.2.0/",
+      "@google/genai": "https://aistudiocdn.com/@google/genai@^1.26.0"
+    }
+  }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Sora', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.5s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* --- Marketplace: Soft UI --- */
+    .marketplace-body {
+      background-color: #e0e5ec;
+    }
+    .soft-ui-container {
+      background-color: #e0e5ec;
+      border-radius: 1.25rem;
+      box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #ffffff;
+      transition: box-shadow 0.3s ease;
+    }
+    .soft-ui-button {
+      background-color: #e0e5ec;
+      border-radius: 0.75rem;
+      box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #ffffff;
+      transition: all 0.2s ease-in-out;
+    }
+    .soft-ui-button:hover {
+      box-shadow: 7px 7px 15px #bec3c9, -7px -7px 15px #ffffff;
+      transform: translateY(-1px);
+    }
+    .soft-ui-button:active {
+      box-shadow: inset 5px 5px 10px #bec3c9, inset -5px -5px 10px #ffffff;
+      transform: translateY(0.5px);
+    }
+    .soft-ui-input {
+      background: #e0e5ec;
+      border-radius: 0.5rem;
+      box-shadow: inset 4px 4px 8px #bec3c9, inset -4px -4px 8px #ffffff;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .marketplace-body {
+        background-color: #2c3038;
+      }
+      .soft-ui-container {
+        background-color: #2c3038;
+        box-shadow: 8px 8px 16px #23262c, -8px -8px 16px #353a44;
+      }
+      .soft-ui-button {
+        background-color: #2c3038;
+        box-shadow: 5px 5px 10px #23262c, -5px -5px 10px #353a44;
+      }
+      .soft-ui-button:hover {
+        box-shadow: 7px 7px 15px #23262c, -7px -7px 15px #353a44;
+      }
+      .soft-ui-button:active {
+        box-shadow: inset 5px 5px 10px #23262c, inset -5px -5px 10px #353a44;
+      }
+      .soft-ui-input {
+        background-color: #2c3038;
+        box-shadow: inset 4px 4px 8px #23262c, inset -4px -4px 8px #353a44;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 dark:text-slate-200 marketplace-body">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
